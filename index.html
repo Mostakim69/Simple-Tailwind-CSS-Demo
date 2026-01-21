@@ -1,14 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Relatus AI UI</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1 class="text-2xl font-bold">hello world</h1>
+<body class="bg-gray-50">
+
+  <!-- App -->
+  <div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r px-4 py-6 flex flex-col">
+      <h1 class="text-xl font-bold mb-6">Relatus.AI</h1>
+
+      <nav class="space-y-3 text-sm">
+        <button class="text-green-600 font-medium">AI Chat</button>
+        <button class="text-gray-600 block">AI Video</button>
+        <button class="text-gray-600 block">AI Image</button>
+        <button class="text-gray-600 block">Documents</button>
+        <button class="text-gray-600 block">Community</button>
+        <button class="text-gray-600 block">History</button>
+      </nav>
+
+      <div class="mt-auto text-sm text-gray-500">
+        <p>Jenny Wilson</p>
+        <p class="text-xs">jenny@gmail.com</p>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 flex flex-col">
+
+      <!-- Header -->
+<!-- NAVBAR -->
+<header class="w-full h-16 bg-white border-b flex items-center justify-between px-6">
+
+  <!-- Left -->
+  <div class="text-sm font-semibold text-gray-900">
+    AI Chat
+  </div>
+
+  <!-- Center -->
+  <div class="flex items-center gap-3">
+    <div class="relative">
+      <input
+        type="text"
+        placeholder="Search..."
+        class="w-72 pl-9 pr-12 py-2 text-sm border rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none"
+      />
+
+      <!-- Search icon -->
+      <svg
+        class="absolute left-3 top-2.5 w-4 h-4 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
+      </svg>
+
+      <!-- Shortcut -->
+      <span
+        class="absolute right-2 top-2 text-xs px-2 py-0.5 border rounded-md text-gray-400"
+      >
+        ⌘ K
+      </span>
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div class="flex items-center gap-3">
+
+    <!-- Version Dropdown -->
+    <button
+      class="flex items-center gap-2 border px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-50"
+    >
+      Relatus 2.0
+      <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+
+    <!-- Create Task -->
+    <button
+      class="flex items-center gap-1 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium"
+    >
+      + Create task
+    </button>
+
+  </div>
+</header>
+
+
+      <!-- Content -->
+      <section class="flex-1 flex flex-col items-center justify-center text-center px-6">
+        <div class="w-16 h-16 bg-green-500 rounded-full shadow-lg mb-6"></div>
+
+        <h2 class="text-3xl font-semibold mb-2">
+          Welcome to Relatus.AI
+        </h2>
+
+        <p class="text-gray-500 mb-8">
+          Get started by creating a task and Chat can do the rest.
+        </p>
+
+        <!-- Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
+          <div class="bg-white p-5 rounded-xl border shadow-sm">
+            <h3 class="font-medium">Productivity Boost</h3>
+            <p class="text-sm text-gray-500 mt-2">
+              Start your day with focus.
+            </p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border shadow-sm">
+            <h3 class="font-medium">User-Friendly Onboarding</h3>
+            <p class="text-sm text-gray-500 mt-2">
+              Easy to get started.
+            </p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border shadow-sm">
+            <h3 class="font-medium">Voice Responses</h3>
+            <p class="text-sm text-gray-500 mt-2">
+              Talk with AI naturally.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chat Input -->
+      <footer class="border-t bg-white px-6 py-4">
+        <div class="flex items-center gap-3 border rounded-xl px-4 py-3">
+          <input
+            id="chatInput"
+            type="text"
+            placeholder="Ask me anything..."
+            class="flex-1 outline-none text-sm"
+          />
+          <button
+            id="sendBtn"
+            class="bg-green-500 text-white px-4 py-2 rounded-lg"
+          >
+            Send
+          </button>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

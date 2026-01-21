@@ -10,18 +10,22 @@
 
   <div class="flex h-full">
 
-<aside class="w-64 bg-white border-r flex flex-col h-full shrink-0">
-  
+<aside
+  id="sidebar"
+  class="w-64 bg-white border-r flex flex-col h-full shrink-0 transition-all duration-300 ease-in-out overflow-hidden"
+>
   <div class="p-6 flex items-center justify-between">
     <div class="flex items-center gap-2">
       <div class="w-8 h-8 bg-gradient-to-tr from-green-500 to-emerald-300 rounded-lg flex items-center justify-center shadow-sm">
         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
       </div>
-      <span class="text-xl font-bold text-gray-800 tracking-tight">Relatus.AI</span>
+<span class="sidebar-text text-xl font-bold text-gray-800 tracking-tight">
+  Relatus.AI
+</span>
     </div>
-    <button class="text-gray-400 hover:text-gray-600">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-    </button>
+       <button id="toggleSidebar" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
   </div>
 
   <nav class="px-4 space-y-1">
@@ -177,8 +181,7 @@
   </div>
 </header>
 
-      <main class="flex-1 flex flex-col bg-white relative overflow-y-auto" style="background-image: radial-gradient(#e5e7eb 0.8px, transparent 0.8px); background-size: 24px 24px;">
-        
+<main class="flex-1 flex flex-col bg-white relative overflow-hidden" style="background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 20px 20px;">        
         <section class="flex-1 flex flex-col items-center justify-center px-6 max-w-5xl mx-auto w-full">
           
           <div class="relative mb-6">
@@ -242,6 +245,7 @@
       </main>
     </div>
   </div>
-
+  
+ <script src="script.js"></script>
 </body>
 </html>

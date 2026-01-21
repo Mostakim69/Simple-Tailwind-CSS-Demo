@@ -4,48 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Relatus AI UI</title>
-
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 h-screen overflow-hidden">
 
-  <!-- App -->
-  <div class="flex min-h-screen">
+  <div class="flex h-full">
 
-    <!-- Sidebar -->
-    <aside class="w-64 bg-white border-r px-4 py-6 flex flex-col">
+    <aside class="w-64 bg-white border-r px-4 py-6 flex flex-col shrink-0">
       <h1 class="text-xl font-bold mb-6">Relatus.AI</h1>
-
-      <nav class="space-y-3 text-sm">
-        <button class="text-green-600 font-medium">AI Chat</button>
+      <nav class="space-y-3 text-sm flex-1">
+        <button class="text-green-600 font-medium block">AI Chat</button>
         <button class="text-gray-600 block">AI Video</button>
         <button class="text-gray-600 block">AI Image</button>
         <button class="text-gray-600 block">Documents</button>
         <button class="text-gray-600 block">Community</button>
         <button class="text-gray-600 block">History</button>
       </nav>
-
-      <div class="mt-auto text-sm text-gray-500">
-        <p>Jenny Wilson</p>
+      <div class="border-t pt-4 text-sm text-gray-500">
+        <p class="font-semibold text-gray-800">Jenny Wilson</p>
         <p class="text-xs">jenny@gmail.com</p>
       </div>
     </aside>
 
-    <!-- Main -->
-    <main class="flex-1 flex flex-col">
-
-      <!-- Header -->
+    <div class="flex-1 flex flex-col min-w-0">
+      
 <!-- NAVBAR -->
-<header class="w-full h-16 bg-white border-b flex items-center justify-between px-6">
+<header class="w-full h-16 bg-white border-b flex items-center px-6">
 
   <!-- Left -->
   <div class="text-sm font-semibold text-gray-900">
     AI Chat
   </div>
 
-  <!-- Center -->
-  <div class="flex items-center gap-3">
+  <!-- Right Side (Search + Buttons) -->
+  <div class="ml-auto flex items-center gap-3">
+
+    <!-- Search -->
     <div class="relative">
       <input
         type="text"
@@ -72,10 +66,6 @@
         ⌘ K
       </span>
     </div>
-  </div>
-
-  <!-- Right -->
-  <div class="flex items-center gap-3">
 
     <!-- Version Dropdown -->
     <button
@@ -98,65 +88,71 @@
   </div>
 </header>
 
-
-      <!-- Content -->
-      <section class="flex-1 flex flex-col items-center justify-center text-center px-6">
-        <div class="w-16 h-16 bg-green-500 rounded-full shadow-lg mb-6"></div>
-
-        <h2 class="text-3xl font-semibold mb-2">
-          Welcome to Relatus.AI
-        </h2>
-
-        <p class="text-gray-500 mb-8">
-          Get started by creating a task and Chat can do the rest.
-        </p>
-
-        <!-- Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
-          <div class="bg-white p-5 rounded-xl border shadow-sm">
-            <h3 class="font-medium">Productivity Boost</h3>
-            <p class="text-sm text-gray-500 mt-2">
-              Start your day with focus.
-            </p>
+      <main class="flex-1 flex flex-col bg-white relative overflow-y-auto" style="background-image: radial-gradient(#e5e7eb 0.8px, transparent 0.8px); background-size: 24px 24px;">
+        
+        <section class="flex-1 flex flex-col items-center justify-center px-6 max-w-5xl mx-auto w-full">
+          
+          <div class="relative mb-6">
+            <div class="w-16 h-16 bg-gradient-to-tr from-green-600 to-green-300 rounded-full shadow-[0_0_50px_rgba(34,197,94,0.4)]"></div>
+            <div class="absolute inset-0 bg-green-400 rounded-full blur-2xl opacity-20 animate-pulse"></div>
           </div>
 
-          <div class="bg-white p-5 rounded-xl border shadow-sm">
-            <h3 class="font-medium">User-Friendly Onboarding</h3>
-            <p class="text-sm text-gray-500 mt-2">
-              Easy to get started.
-            </p>
-          </div>
+          <h2 class="text-4xl font-bold text-gray-800 mb-3">Welcome to Relatus.AI</h2>
+          <p class="text-gray-500 mb-1 text-sm">Get started by Relatus a task and Chat can do the rest.</p>
+          <p class="text-gray-400 text-sm mb-12">Not sure where to start?</p>
 
-          <div class="bg-white p-5 rounded-xl border shadow-sm">
-            <h3 class="font-medium">Voice Responses</h3>
-            <p class="text-sm text-gray-500 mt-2">
-              Talk with AI naturally.
-            </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm text-left">
+              <div class="w-10 h-10 bg-blue-50 text-blue-500 rounded-xl flex items-center justify-center mb-4 text-xl">📉</div>
+              <h3 class="font-bold text-gray-800 text-sm">Productivity Boost</h3>
+              <p class="text-[11px] text-gray-400 mt-2 leading-normal">Start your day with focus. Set three main goals you want to accomplish.</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm text-left">
+              <div class="w-10 h-10 bg-orange-50 text-orange-400 rounded-xl flex items-center justify-center mb-4 text-xl">👤</div>
+              <h3 class="font-bold text-gray-800 text-sm">User-Friendly Onboarding</h3>
+              <p class="text-[11px] text-gray-400 mt-2 leading-normal">Start your day with focus. Set three main goals you want to accomplish.</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm text-left">
+              <div class="w-10 h-10 bg-pink-50 text-pink-400 rounded-xl flex items-center justify-center mb-4 text-xl">🎙️</div>
+              <h3 class="font-bold text-gray-800 text-sm">Voice-Activated Responses</h3>
+              <p class="text-[11px] text-gray-400 mt-2 leading-normal">Start your day with focus. Set three main goals you want to accomplish.</p>
+            </div>
           </div>
+        </section>
+
+        <div class="w-full max-w-5xl mx-auto px-6 pb-6 mt-auto">
+          <div class="bg-white border-[1.5px] border-green-200 rounded-2xl shadow-sm overflow-hidden">
+            <div class="flex items-center px-4 py-4">
+              <input type="text" placeholder="Ask me anything..." class="flex-1 outline-none text-sm text-gray-700 placeholder-gray-400" />
+              <button class="text-gray-300 hover:text-green-500 transition-colors ml-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              </button>
+            </div>
+            
+            <div class="flex items-center justify-between px-4 py-3 bg-gray-50/50 border-t border-gray-100">
+              <div class="flex items-center gap-4">
+                <button class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-800 transition-colors">
+                  <span class="text-sm">📎</span> Attach
+                </button>
+                <button class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-800 transition-colors">
+                  <span class="text-sm">🎙️</span> Voice Message
+                </button>
+                <button class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-800 transition-colors">
+                  <span class="text-sm">📁</span> Browse Prompts
+                </button>
+              </div>
+              <div class="text-[10px] text-gray-400 font-medium">20/1,500</div>
+            </div>
+          </div>
+          <p class="text-center text-[10px] text-gray-400 mt-3">
+            Relatus may display inaccurate info, so please double check the response. 
+            <a href="#" class="font-semibold text-gray-500 hover:underline ml-1">Your Privacy & Relatus.AI</a>
+          </p>
         </div>
-      </section>
 
-      <!-- Chat Input -->
-      <footer class="border-t bg-white px-6 py-4">
-        <div class="flex items-center gap-3 border rounded-xl px-4 py-3">
-          <input
-            id="chatInput"
-            type="text"
-            placeholder="Ask me anything..."
-            class="flex-1 outline-none text-sm"
-          />
-          <button
-            id="sendBtn"
-            class="bg-green-500 text-white px-4 py-2 rounded-lg"
-          >
-            Send
-          </button>
-        </div>
-      </footer>
-
-    </main>
+      </main>
+    </div>
   </div>
 
-  <script src="script.js"></script>
 </body>
 </html>

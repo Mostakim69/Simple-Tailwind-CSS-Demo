@@ -107,4 +107,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // User Profile Menu - Cursor Pointer on hover
+  const userProfileMenu = document.getElementById("userProfileMenu");
+  if (userProfileMenu) {
+    // Add pointer cursor to profile header
+    const profileHeader = userProfileMenu.querySelector(
+      ".flex.items-center.justify-between.cursor-pointer",
+    );
+    if (profileHeader) {
+      profileHeader.style.cursor = "pointer";
+    }
+
+    // Add pointer cursor to all menu buttons
+    const menuButtons = userProfileMenu.querySelectorAll("button");
+    menuButtons.forEach((btn) => {
+      btn.style.cursor = "pointer";
+      btn.addEventListener("mouseenter", () => {
+        btn.style.cursor = "pointer";
+      });
+    });
+
+    // Add pointer cursor to the entire dropdown
+    userProfileMenu.addEventListener("mouseenter", () => {
+      userProfileMenu.style.cursor = "pointer";
+    });
+  }
 });

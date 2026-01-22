@@ -5,21 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apps - Relatus AI UI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <style>
-      .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-      }
-      .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-    </style>
   </head>
-  <body class="bg-gray-50 min-h-screen">
+  <body class="bg-gray-50 min-h-screen overflow-hidden">
     <div class="flex h-screen">
       <!-- Sidebar -->
       <aside
@@ -92,7 +79,7 @@
 
         <nav class="px-3 sm:px-4 py-4 space-y-1 flex-1 overflow-y-auto">
           <button
-            class="w-full flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 rounded-xl text-sm transition-colors"
+            class="w-full flex items-center gap-3 px-3 py-2.5 bg-gray-50 text-gray-900 rounded-xl font-medium text-sm"
           >
             <svg
               class="w-5 h-5 text-green-500 flex-shrink-0"
@@ -110,7 +97,7 @@
             <span class="sidebar-text">AI Chat</span>
           </button>
           <button
-            class="w-full flex items-center gap-3 px-3 py-2.5 bg-gray-50 text-gray-900 rounded-xl font-medium text-sm"
+            class="w-full flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 rounded-xl text-sm transition-colors"
           >
             <svg
               class="w-5 h-5 flex-shrink-0"
@@ -341,325 +328,495 @@
         class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"
       ></div>
 
-      <!-- Main Contentcc -->
-      <main class="flex-1 overflow-y-auto p-6 lg:p-10 hide-scrollbar">
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col min-w-0">
         <header
-          class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4"
+          class="w-full h-16 bg-white border-b flex items-center px-4 sm:px-6"
         >
-          <h1 class="text-3xl font-bold tracking-tight">Overview</h1>
-          <div class="flex items-center gap-4">
-            <div class="relative group">
-              <span
-                class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors"
-                >search</span
-              >
-              <input
-                class="pl-10 pr-4 py-2.5 w-full md:w-64 rounded-xl border-none bg-white dark:bg-slate-800 shadow-sm focus:ring-2 focus:ring-primary outline-none transition-all"
-                placeholder="Search..."
-                type="text"
+          <button
+            id="toggleSidebar"
+            class="text-gray-600 hover:text-gray-900 focus:outline-none lg:hidden"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
               />
+            </svg>
+          </button>
+          <div class="text-sm font-semibold text-gray-900 ml-3 lg:ml-0">
+            Apps
+          </div>
+          <div class="ml-auto flex items-center gap-2 sm:gap-3">
+            <!-- Apps Icon Button -->
+            <button
+              id="appsBtn"
+              class="flex items-center justify-center w-10 h-10 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
+                />
+              </svg>
+            </button>
+
+            <div class="relative hidden sm:block">
+              <input
+                type="text"
+                placeholder="Search..."
+                class="w-48 sm:w-72 pl-9 pr-12 py-2 text-sm border rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-200"
+              />
+              <svg
+                class="absolute left-3 top-2.5 w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z"
+                />
+              </svg>
+              <span
+                class="absolute right-2 top-2 text-xs px-2 py-0.5 border rounded-md text-gray-400"
+                >⌘ K</span
+              >
             </div>
             <button
-              class="p-2.5 bg-white dark:bg-slate-800 rounded-xl shadow-sm text-slate-500 hover:text-primary transition-colors relative"
+              class="hidden sm:flex items-center gap-2 border px-2 sm:px-3 py-1 sm:py-2 rounded-lg text-xs sm:text-sm text-gray-700 hover:bg-gray-50"
             >
-              <span class="material-icons-outlined">notifications</span>
-              <span
-                class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-800"
-              ></span>
+              Relatus 2.0
+              <svg
+                class="w-4 h-4 text-gray-500"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
             </button>
-            <img
-              alt="User Profile"
-              class="w-11 h-11 rounded-xl object-cover shadow-sm"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrXQ2mZ-9chc6sRN6ZHLHB1Yrr0zLHlJFAJCyqADxBS1sZRk9R-tNZVOa3QKFzyJ0TVkClKf-QusyiiWjeGV6aPR_g5yePbX9vSwgqepCvgMaZKiogy0rz1JSkeS9zNPevZ2htps8-vJmyXxDpIQdELs1c_v7_xPuv1rzwbR77s0PcdIkgmc7sbVMgS957_xRcn1fzX2i02xN-KwJ1NBxV0v3Vj5cXhCwMV9uOY7AB4EDTRyFwJjMuvQt0ZSdz5_lb03wgCH253x4"
-            />
+            <button
+              class="flex items-center gap-1 bg-green-500 hover:bg-green-600 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-lg text-xs sm:text-sm font-medium"
+            >
+              <span class="hidden sm:inline">+ Create task</span
+              ><span class="sm:hidden">+</span>
+            </button>
           </div>
         </header>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div class="lg:col-span-8 space-y-10">
-            <section
-              class="relative h-[320px] rounded-3xl overflow-hidden group shadow-xl"
-            >
-              <img
-                alt="Vectornator Art"
-                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWjMfz40TsR0B3XuebwpDRTX8xvjtZawU0j7oxNW1Nr6IfWVeI1h9GlrafmN9pi0vmChSfWcCRpcKxPbpWxYiCQyhTp0w4Sey74Rw6qTryM8-O7Xz2bwogSOW_sbQLDXxcEOX16XMjGV7pV3tFKyHDbZUc7KiOFWwkdCM68s5jeszQEV9RyrtIBWSkgvCPjTOBTiTodaPU3mIkORQN3EGw8Oc2L6oufnpAYYEjTUYrn4wSW3P368_RVDrBJnrWLnNG_V2H3b9MLf8"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-              ></div>
-              <div
-                class="absolute bottom-0 left-0 p-8 w-full flex flex-col md:flex-row md:items-end justify-between gap-4"
-              >
-                <div class="text-white max-w-lg">
-                  <span
-                    class="uppercase text-xs font-bold tracking-widest text-blue-400 mb-2 block"
-                    >Graphics and Design</span
-                  >
-                  <h2 class="text-3xl font-bold mb-2">
-                    Vectornator: Design Software
-                  </h2>
-                  <p class="text-slate-300 text-sm">
-                    Create designs, interfaces and beautiful illustrations with
-                    this professional vector tool designed for productivity.
-                  </p>
-                </div>
-                <button
-                  class="bg-primary hover:bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg transition-all active:scale-95 whitespace-nowrap"
-                >
-                  Download
-                </button>
-              </div>
-            </section>
-            <section>
-              <div class="flex items-center justify-between mb-6">
-                <h3 class="text-xl font-bold">Categories</h3>
-                <a
-                  class="text-sm font-semibold text-primary hover:underline"
-                  href="#"
-                  >Show all</a
-                >
-              </div>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <button
-                  class="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
-                >
-                  <div
-                    class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform"
-                  >
-                    <span class="material-icons-outlined">videogame_asset</span>
-                  </div>
-                  <span class="font-semibold">Games</span>
-                </button>
-                <button
-                  class="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
-                >
-                  <div
-                    class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform"
-                  >
-                    <span class="material-icons-outlined">palette</span>
-                  </div>
-                  <span class="font-semibold">Creation</span>
-                </button>
-                <button
-                  class="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
-                >
-                  <div
-                    class="w-10 h-10 rounded-xl bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center group-hover:scale-110 transition-transform"
-                  >
-                    <span class="material-icons-outlined">code</span>
-                  </div>
-                  <span class="font-semibold">Dev</span>
-                </button>
-                <button
-                  class="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
-                >
-                  <div
-                    class="w-10 h-10 rounded-xl bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center group-hover:scale-110 transition-transform"
-                  >
-                    <span class="material-icons-outlined">business_center</span>
-                  </div>
-                  <span class="font-semibold">Work</span>
-                </button>
-              </div>
-            </section>
-            <section>
-              <div class="flex items-center justify-between mb-6">
-                <h3 class="text-xl font-bold">Top Games &amp; Apps</h3>
-                <a
-                  class="text-sm font-semibold text-primary hover:underline"
-                  href="#"
-                  >Show all</a
-                >
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div
-                  class="bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-transparent dark:border-slate-700/50"
-                >
-                  <div
-                    class="relative aspect-square rounded-2xl overflow-hidden mb-4"
-                  >
-                    <img
-                      alt="Tayasui sketches"
-                      class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3rVtf_tJCOodDRyJCI_FB3TwtD_BAZnVlg5s54J1-RX_EXOUz7_fxf4JDQnaUawfu0DxZCkuxmy-seq7DxdHBAqcrC_9vd-lBc6LDwE09iHUHJxGwH8q6kSPPPs2eWkj3rbuchH5HlRiEKwudLsANCBhi6tZrhUMIPmYlGdaqkhu-aulAab4HSSykFZtZGL4NGPPym7s4kOuCKuEy6EumJcwRHZ0FpAS_XbZM5yafQRCFRT0nHOOdWP44q7sBwBqP1oIsvGRg1Tg"
-                    />
-                  </div>
-                  <h4 class="font-bold">Tayasui sketches</h4>
-                  <div class="flex items-center justify-between mt-1">
-                    <span
-                      class="text-xs text-slate-500 dark:text-slate-400 uppercase font-medium"
-                      >Creation</span
-                    >
-                    <a class="text-xs font-bold text-primary" href="#"
-                      >Download</a
-                    >
-                  </div>
-                </div>
-                <div
-                  class="bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-transparent dark:border-slate-700/50"
-                >
-                  <div
-                    class="relative aspect-square rounded-2xl overflow-hidden mb-4"
-                  >
-                    <img
-                      alt="Myst Game"
-                      class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDhct6zWypOTHCyOC0KwhOszhm6KY_5CAlUIuU3JzyX703KfbXg-QAZ7TRlOly066bqR0ruvW4jVKjreLoAGL1yCi_6ClG2Ue-bOmFgyOXjuAshGkbjyGOx-HbM3P_gOqaKT7t-6bvYGnaaKZHAt5D868SHWuicAcxP9OpFLPB3uw2Unh9frs6-deIFT4eoSsSJPmFXbkXaXfNC9uMPreBe6etlWX7pT0HV9YGmiYcZn_HvKgFODxSE11ogrp1atQ0SdJSK58X8MM"
-                    />
-                  </div>
-                  <h4 class="font-bold">Myst</h4>
-                  <div class="flex items-center justify-between mt-1">
-                    <span
-                      class="text-xs text-slate-500 dark:text-slate-400 uppercase font-medium"
-                      >Adventure Game</span
-                    >
-                    <span class="text-xs font-bold text-primary">$12.00</span>
-                  </div>
-                </div>
-                <div
-                  class="bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-transparent dark:border-slate-700/50"
-                >
-                  <div
-                    class="relative aspect-square rounded-2xl overflow-hidden mb-4"
-                  >
-                    <img
-                      alt="Swift Playgrounds"
-                      class="w-full h-full object-cover"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAlefWWfGDxkLvT2tSVvjCaR1wD3r3z74Bhjsc-fucPULb0NZuOwEskhZjShvnRiP-q81hq6eX20yRVXdW9RLWpu-CCcMnhmIzCMGexDx_QBTCcWVoDjbkyo0zlHDQoeeXySnmstSJJ-A3HXRA5JpO4C-BCDHCNZIrBp-O-rcksK-4uDOXmuhqKdMrJ1bmEK5EYKTzp1Lhw6G1IeTuk8JbGFzfb0U3wITau2v8dDeumy1MLckI3FhE_Lq9xNIltXW39CYwcydJNsQ"
-                    />
-                  </div>
-                  <h4 class="font-bold">Swift Playgrounds</h4>
-                  <div class="flex items-center justify-between mt-1">
-                    <span
-                      class="text-xs text-slate-500 dark:text-slate-400 uppercase font-medium"
-                      >Development</span
-                    >
-                    <span class="text-xs font-bold text-primary">$25.00</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-          <div class="lg:col-span-4 space-y-8">
-            <section
-              class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm"
-            >
-              <div class="flex items-center justify-between mb-6">
-                <h3 class="text-lg font-bold">Trending</h3>
-                <a
-                  class="text-xs font-semibold text-primary hover:underline"
-                  href="#"
-                  >Show all</a
-                >
-              </div>
-              <div class="space-y-6">
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center text-blue-500"
-                  >
-                    <span class="material-icons-outlined">send</span>
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="text-sm font-bold truncate">Telegram</h4>
-                    <p
-                      class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tight"
-                    >
-                      Social Networks
-                    </p>
-                  </div>
-                  <button
-                    class="text-[11px] font-bold text-primary bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors"
-                  >
-                    Download
-                  </button>
-                </div>
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-green-100 dark:bg-green-900/40 rounded-xl flex items-center justify-center text-green-500"
-                  >
-                    <span class="material-icons-outlined">chat</span>
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="text-sm font-bold truncate">WhatsApp Desktop</h4>
-                    <p
-                      class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tight"
-                    >
-                      Trending
-                    </p>
-                  </div>
-                  <button
-                    class="text-[11px] font-bold text-primary bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors"
-                  >
-                    Download
-                  </button>
-                </div>
-                <div class="flex items-center gap-4">
-                  <img
-                    alt="Machinarium"
-                    class="w-12 h-12 rounded-xl object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZW_FquS_z02jWMWVYptryemx4iuYIj0_j2Qo9oXkC6wWnC3Fp6MqRP_H2fJi6powtwZlGG6WVpzYPi1bvm03ZtokXdifqNSN84EpYlsjBzsEadKyLu57XB5t-OodpMhplNZ_erzuSqxdEyBErlAjQswLyl6-HkDcFSEHDEh3Ysz_E94MYlNOZFjKXW2IhP9LlssX5WkNHOtsWpJZnyrsguHijoMx-BgKD3HC4WJpHoEyEG-C8iUUaRtuzbJjOvnBNgx9ytwd3pjQ"
-                  />
-                  <div class="flex-1 min-w-0">
-                    <h4 class="text-sm font-bold truncate">Machinarium</h4>
-                    <p
-                      class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tight"
-                    >
-                      Adventure Game
-                    </p>
-                  </div>
-                  <button
-                    class="text-[11px] font-bold text-primary bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors"
-                  >
-                    Download
-                  </button>
-                </div>
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/40 rounded-xl flex items-center justify-center text-indigo-500"
-                  >
-                    <span class="material-icons-outlined">description</span>
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="text-sm font-bold truncate">Microsoft Word</h4>
-                    <p
-                      class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tight"
-                    >
-                      Text Editor
-                    </p>
-                  </div>
-                  <button
-                    class="text-[11px] font-bold text-primary bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors"
-                  >
-                    Download
-                  </button>
-                </div>
-              </div>
-            </section>
-            <section
-              class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm overflow-hidden relative group"
-            >
-              <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
-                <img
-                  alt="Bring You Home Game"
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo7msaWLQaVY-9Uz89HOXMcjo_vvrdPE303y-nVSV19ciJ9CJeeVvcgn1RlKWg8A7-t3EqXbmqXO7JHf0jLjq_1SB0JvI_JKGWak3cD3x5rMBqZw-w4TKNRNtHr5l_G6imsNHWb21UtwIQjf7mEP7zbkYwv5Fe7g3e_Sw1aQqD9lgLCkuyZ0mvp7ng3SzEOrCJCbYDkJ4L1i-YK1iUqWJKseEinHHRLB4RrIJCpqRTJIGub4Oy9nYz9lcUaNf3JcJeYvawt480_zU"
-                />
-              </div>
-              <h4 class="text-xl font-bold mb-1">Bring You Home</h4>
-              <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
-                A cute, purely visual puzzle game for the whole family.
-              </p>
-              <button
-                class="w-full bg-primary py-4 rounded-2xl text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:-translate-y-1 active:scale-95"
-              >
-                $21.50
-              </button>
-            </section>
-          </div>
-        </div>
-      </main>
-    </div>
 
-    <script src="script.js"></script>
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-6 lg:p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-8 space-y-10">
+              <section
+                class="relative h-[320px] rounded-3xl overflow-hidden group shadow-xl"
+              >
+                <img
+                  alt="Vectornator Art"
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWjMfz40TsR0B3XuebwpDRTX8xvjtZawU0j7oxNW1Nr6IfWVeI1h9GlrafmN9pi0vmChSfWcCRpcKxPbpWxYiCQyhTp0w4Sey74Rw6qTryM8-O7Xz2bwogSOW_sbQLDXxcEOX16XMjGV7pV3tFKyHDbZUc7KiOFWwkdCM68s5jeszQEV9RyrtIBWSkgvCPjTOBTiTodaPU3mIkORQN3EGw8Oc2L6oufnpAYYEjTUYrn4wSW3P368_RVDrBJnrWLnNG_V2H3b9MLf8"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0 p-8 w-full flex flex-col md:flex-row md:items-end justify-between gap-4"
+                >
+                  <div class="text-white max-w-lg">
+                    <span
+                      class="uppercase text-xs font-bold tracking-widest text-green-400 mb-2 block"
+                      >Graphics and Design</span
+                    >
+                    <h2 class="text-3xl font-bold mb-2">
+                      Vectornator: Design Software
+                    </h2>
+                    <p class="text-gray-300 text-sm">
+                      Create designs, interfaces and beautiful illustrations
+                      with this professional vector tool designed for
+                      productivity.
+                    </p>
+                  </div>
+                  <button
+                    class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg transition-all active:scale-95 whitespace-nowrap"
+                  >
+                    Download
+                  </button>
+                </div>
+              </section>
+
+              <section>
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="text-xl font-bold text-gray-900">Categories</h3>
+                  <a
+                    class="text-sm font-semibold text-green-600 hover:underline"
+                    href="#"
+                    >Show all</a
+                  >
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <button
+                    class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group border border-gray-100"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-semibold text-gray-900">Games</span>
+                  </button>
+                  <button
+                    class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group border border-gray-100"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.5a1 1 0 01-1-.5A1 1 0 0012.5 13h-1a1 1 0 00-1 .5A1 1 0 0010 14h-2.5a2 2 0 00-2 2v4a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-semibold text-gray-900">Creation</span>
+                  </button>
+                  <button
+                    class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group border border-gray-100"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-semibold text-gray-900">Dev</span>
+                  </button>
+                  <button
+                    class="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group border border-gray-100"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center group-hover:scale-110 transition-transform"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <span class="font-semibold text-gray-900">Work</span>
+                  </button>
+                </div>
+              </section>
+
+              <section>
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="text-xl font-bold text-gray-900">
+                    Top Games & Apps
+                  </h3>
+                  <a
+                    class="text-sm font-semibold text-green-600 hover:underline"
+                    href="#"
+                    >Show all</a
+                  >
+                </div>
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                >
+                  <div
+                    class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100"
+                  >
+                    <div
+                      class="relative aspect-square rounded-2xl overflow-hidden mb-4"
+                    >
+                      <img
+                        alt="Tayasui sketches"
+                        class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3rVtf_tJCOodDRyJCI_FB3TwtD_BAZnVlg5s54J1-RX_EXOUz7_fxf4JDQnaUawfu0DxZCkuxmy-seq7DxdHBAqcrC_9vd-lBc6LDwE09iHUHJxGwH8q6kSPPPs2eWkj3rbuchH5HlRiEKwudLsANCBhi6tZrhUMIPmYlGdaqkhu-aulAab4HSSykFZtZGL4NGPPym7s4kOuCKuEy6EumJcwRHZ0FpAS_XbZM5yafQRCFRT0nHOOdWP44q7sBwBqP1oIsvGRg1Tg"
+                      />
+                    </div>
+                    <h4 class="font-bold text-gray-900">Tayasui sketches</h4>
+                    <div class="flex items-center justify-between mt-1">
+                      <span class="text-xs text-gray-500 uppercase font-medium"
+                        >Creation</span
+                      >
+                      <a class="text-xs font-bold text-green-600" href="#"
+                        >Download</a
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100"
+                  >
+                    <div
+                      class="relative aspect-square rounded-2xl overflow-hidden mb-4"
+                    >
+                      <img
+                        alt="Myst Game"
+                        class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDhct6zWypOTHCyOC0KwhOszhm6KY_5CAlUIuU3JzyX703KfbXg-QAZ7TRlOly066bqR0ruvW4jVKjreLoAGL1yCi_6ClG2Ue-bOmFgyOXjuAshGkbjyGOx-HbM3P_gOqaKT7t-6bvYGnaaKZHAt5D868SHWuicAcxP9OpFLPB3uw2Unh9frs6-deIFT4eoSsSJPmFXbkXaXfNC9uMPreBe6etlWX7pT0HV9YGmiYcZn_HvKgFODxSE11ogrp1atQ0SdJSK58X8MM"
+                      />
+                    </div>
+                    <h4 class="font-bold text-gray-900">Myst</h4>
+                    <div class="flex items-center justify-between mt-1">
+                      <span class="text-xs text-gray-500 uppercase font-medium"
+                        >Adventure Game</span
+                      >
+                      <span class="text-xs font-bold text-green-600"
+                        >$12.00</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="bg-white p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100"
+                  >
+                    <div
+                      class="relative aspect-square rounded-2xl overflow-hidden mb-4"
+                    >
+                      <img
+                        alt="Swift Playgrounds"
+                        class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAlefWWfGDxkLvT2tSVvjCaR1wD3r3z74Bhjsc-fucPULb0NZuOwEskhZjShvnRiP-q81hq6eX20yRVXdW9RLWpu-CCcMnhmIzCMGexDx_QBTCcWVoDjbkyo0zlHDQoeeXySnmstSJJ-A3HXRA5JpO4C-BCDHCNZIrBp-O-rcksK-4uDOXmuhqKdMrJ1bmEK5EYKTzp1Lhw6G1IeTuk8JbGFzfb0U3wITau2v8dDeumy1MLckI3FhE_Lq9xNIltXW39CYwcydJNsQ"
+                      />
+                    </div>
+                    <h4 class="font-bold text-gray-900">Swift Playgrounds</h4>
+                    <div class="flex items-center justify-between mt-1">
+                      <span class="text-xs text-gray-500 uppercase font-medium"
+                        >Development</span
+                      >
+                      <span class="text-xs font-bold text-green-600"
+                        >$25.00</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="lg:col-span-4 space-y-8">
+              <section
+                class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100"
+              >
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="text-lg font-bold text-gray-900">Trending</h3>
+                  <a
+                    class="text-xs font-semibold text-green-600 hover:underline"
+                    href="#"
+                    >Show all</a
+                  >
+                </div>
+                <div class="space-y-6">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-500 flex-shrink-0"
+                    >
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 19l9 2-9-18-9 18 9-2m0 0v-8m0 8l-6-4m6 4l6-4"
+                        />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-bold text-gray-900 truncate">
+                        Telegram
+                      </h4>
+                      <p
+                        class="text-[10px] text-gray-500 uppercase font-bold tracking-tight"
+                      >
+                        Social Networks
+                      </p>
+                    </div>
+                    <button
+                      class="text-[11px] font-bold text-green-600 bg-green-50 px-3 py-1.5 rounded-lg hover:bg-green-600 hover:text-white transition-colors whitespace-nowrap flex-shrink-0"
+                    >
+                      Download
+                    </button>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-500 flex-shrink-0"
+                    >
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-bold text-gray-900 truncate">
+                        WhatsApp Desktop
+                      </h4>
+                      <p
+                        class="text-[10px] text-gray-500 uppercase font-bold tracking-tight"
+                      >
+                        Trending
+                      </p>
+                    </div>
+                    <button
+                      class="text-[11px] font-bold text-green-600 bg-green-50 px-3 py-1.5 rounded-lg hover:bg-green-600 hover:text-white transition-colors whitespace-nowrap flex-shrink-0"
+                    >
+                      Download
+                    </button>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <img
+                      alt="Machinarium"
+                      class="w-12 h-12 rounded-xl object-cover flex-shrink-0"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZW_FquS_z02jWMWVYptryemx4iuYIj0_j2Qo9oXkC6wWnC3Fp6MqRP_H2fJi6powtwZlGG6WVpzYPi1bvm03ZtokXdifqNSN84EpYlsjBzsEadKyLu57XB5t-OodpMhplNZ_erzuSqxdEyBErlAjQswLyl6-HkDcFSEHDEh3Ysz_E94MYlNOZFjKXW2IhP9LlssX5WkNHOtsWpJZnyrsguHijoMx-BgKD3HC4WJpHoEyEG-C8iUUaRtuzbJjOvnBNgx9ytwd3pjQ"
+                    />
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-bold text-gray-900 truncate">
+                        Machinarium
+                      </h4>
+                      <p
+                        class="text-[10px] text-gray-500 uppercase font-bold tracking-tight"
+                      >
+                        Adventure Game
+                      </p>
+                    </div>
+                    <button
+                      class="text-[11px] font-bold text-green-600 bg-green-50 px-3 py-1.5 rounded-lg hover:bg-green-600 hover:text-white transition-colors whitespace-nowrap flex-shrink-0"
+                    >
+                      Download
+                    </button>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-500 flex-shrink-0"
+                    >
+                      <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-bold text-gray-900 truncate">
+                        Microsoft Word
+                      </h4>
+                      <p
+                        class="text-[10px] text-gray-500 uppercase font-bold tracking-tight"
+                      >
+                        Text Editor
+                      </p>
+                    </div>
+                    <button
+                      class="text-[11px] font-bold text-green-600 bg-green-50 px-3 py-1.5 rounded-lg hover:bg-green-600 hover:text-white transition-colors whitespace-nowrap flex-shrink-0"
+                    >
+                      Download
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="bg-white p-6 rounded-3xl shadow-sm overflow-hidden relative group border border-gray-100"
+              >
+                <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+                  <img
+                    alt="Bring You Home Game"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo7msaWLQaVY-9Uz89HOXMcjo_vvrdPE303y-nVSV19ciJ9CJeeVvcgn1RlKWg8A7-t3EqXbmqXO7JHf0jLjq_1SB0JvI_JKGWak3cD3x5rMBqZw-w4TKNRNtHr5l_G6imsNHWb21UtwIQjf7mEP7zbkYwv5Fe7g3e_Sw1aQqD9lgLCkuyZ0mvp7ng3SzEOrCJCbYDkJ4L1i-YK1iUqWJKseEinHHRLB4RrIJCpqRTJIGub4Oy9nYz9lcUaNf3JcJeYvawt480_zU"
+                  />
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-1">
+                  Bring You Home
+                </h4>
+                <p class="text-sm text-gray-500 mb-6">
+                  A cute, purely visual puzzle game for the whole family.
+                </p>
+                <button
+                  class="w-full bg-green-500 hover:bg-green-600 py-4 rounded-2xl text-white font-bold text-lg shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all hover:-translate-y-1 active:scale-95"
+                >
+                  $21.50
+                </button>
+              </section>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

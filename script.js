@@ -49,6 +49,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Apps Modal functionality
+  const appsBtn = document.getElementById("appsBtn");
+  const appsModal = document.getElementById("appsModal");
+  const closeAppsModal = document.getElementById("closeAppsModal");
+  const appsSearch = document.getElementById("appsSearch");
+
+  if (appsBtn && appsModal) {
+    appsBtn.addEventListener("click", () => {
+      appsModal.classList.remove("hidden");
+    });
+
+    closeAppsModal.addEventListener("click", () => {
+      appsModal.classList.add("hidden");
+      appsSearch.value = "";
+    });
+
+    appsModal.addEventListener("click", (e) => {
+      if (e.target === appsModal) {
+        appsModal.classList.add("hidden");
+        appsSearch.value = "";
+      }
+    });
+
+    // Search functionality
+    appsSearch.addEventListener("input", (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const appItems = appsModal.querySelectorAll(".grid > div");
+
+      appItems.forEach((item) => {
+        const appName = item.querySelector("span").textContent.toLowerCase();
+        if (appName.includes(searchTerm)) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  }
+
   // Navigation functionality
   const navButtons = document.querySelectorAll("nav button");
   const pageMap = {

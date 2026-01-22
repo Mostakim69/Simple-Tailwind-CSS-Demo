@@ -5,8 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apps - Relatus AI UI</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
   </head>
-  <body class="bg-gray-50 min-h-screen overflow-hidden">
+  <body class="bg-gray-50 min-h-screen">
     <div class="flex h-screen">
       <!-- Sidebar -->
       <aside
@@ -329,369 +342,322 @@
       ></div>
 
       <!-- Main Contentcc -->
-      <div class="flex-1 flex flex-col min-w-0">
+      <main class="flex-1 overflow-y-auto p-6 lg:p-10 hide-scrollbar">
         <header
-          class="w-full h-16 bg-white border-b flex items-center px-4 sm:px-6"
+          class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4"
         >
-          <button
-            id="toggleSidebar"
-            class="text-gray-600 hover:text-gray-900 focus:outline-none lg:hidden"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
-          <div class="text-sm font-semibold text-gray-900 ml-3 lg:ml-0">
-            Apps & Services
-          </div>
-          <div class="ml-auto flex items-center gap-2 sm:gap-3">
-            <div class="relative hidden sm:block">
-              <input
-                type="text"
-                placeholder="Search..."
-                class="w-48 sm:w-72 pl-9 pr-12 py-2 text-sm border rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-200"
-              />
-              <svg
-                class="absolute left-3 top-2.5 w-4 h-4 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z"
-                />
-              </svg>
+          <h1 class="text-3xl font-bold tracking-tight">Overview</h1>
+          <div class="flex items-center gap-4">
+            <div class="relative group">
               <span
-                class="absolute right-2 top-2 text-xs px-2 py-0.5 border rounded-md text-gray-400"
-                >⌘ K</span
+                class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors"
+                >search</span
               >
+              <input
+                class="pl-10 pr-4 py-2.5 w-full md:w-64 rounded-xl border-none bg-white dark:bg-slate-800 shadow-sm focus:ring-2 focus:ring-primary outline-none transition-all"
+                placeholder="Search..."
+                type="text"
+              />
             </div>
             <button
-              class="flex items-center gap-1 text-gray-600 hover:text-gray-900"
+              class="p-2.5 bg-white dark:bg-slate-800 rounded-xl shadow-sm text-slate-500 hover:text-primary transition-colors relative"
             >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                />
-              </svg>
+              <span class="material-icons-outlined">notifications</span>
+              <span
+                class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-800"
+              ></span>
             </button>
-            <button
-              class="flex items-center gap-2 w-10 h-10 rounded-full border border-gray-200 hover:bg-gray-50"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt="Profile"
-                class="w-full h-full object-cover rounded-full"
-              />
-            </button>
+            <img
+              alt="User Profile"
+              class="w-11 h-11 rounded-xl object-cover shadow-sm"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrXQ2mZ-9chc6sRN6ZHLHB1Yrr0zLHlJFAJCyqADxBS1sZRk9R-tNZVOa3QKFzyJ0TVkClKf-QusyiiWjeGV6aPR_g5yePbX9vSwgqepCvgMaZKiogy0rz1JSkeS9zNPevZ2htps8-vJmyXxDpIQdELs1c_v7_xPuv1rzwbR77s0PcdIkgmc7sbVMgS957_xRcn1fzX2i02xN-KwJ1NBxV0v3Vj5cXhCwMV9uOY7AB4EDTRyFwJjMuvQt0ZSdz5_lb03wgCH253x4"
+            />
           </div>
         </header>
-
-        <!-- Main Content Area -->
-        <main class="flex-1 overflow-y-auto">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <!-- Title & Settings -->
-            <div class="flex items-center justify-between mb-6">
-              <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
-                Overview
-              </h1>
-              <button class="p-2 hover:bg-gray-100 rounded-lg text-gray-600">
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div class="grid grid-cols-3 gap-6 mb-8">
-              <!-- Featured App Card -->
-              <div class="col-span-2">
-                <div
-                  class="bg-gradient-to-r from-blue-900 to-blue-700 rounded-2xl p-6 text-white overflow-hidden relative"
-                >
-                  <div
-                    class="absolute -right-12 -top-12 w-40 h-40 bg-blue-600 rounded-full opacity-30"
-                  ></div>
-                  <div class="relative z-10 flex items-start justify-between">
-                    <div>
-                      <h3 class="text-lg font-bold mb-1">
-                        Vectornator: Design Software
-                      </h3>
-                      <p class="text-blue-100 text-sm">
-                        Create designs, interfaces and beautiful illustrations
-                        with this tool
-                      </p>
-                      <button
-                        class="mt-4 bg-blue-400 hover:bg-blue-300 text-blue-900 px-6 py-2 rounded-lg font-semibold text-sm"
-                      >
-                        Download
-                      </button>
-                    </div>
-                    <div
-                      class="w-24 h-24 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center"
-                    >
-                      <span class="text-4xl">🎨</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Trending Section -->
-              <div class="bg-white rounded-2xl p-5 border border-gray-200">
-                <h3
-                  class="text-sm font-bold text-gray-900 mb-4 flex items-center justify-between"
-                >
-                  Trending
-                  <a
-                    href="#"
-                    class="text-green-500 text-xs font-semibold hover:underline"
-                    >Show all</a
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-8 space-y-10">
+            <section
+              class="relative h-[320px] rounded-3xl overflow-hidden group shadow-xl"
+            >
+              <img
+                alt="Vectornator Art"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWjMfz40TsR0B3XuebwpDRTX8xvjtZawU0j7oxNW1Nr6IfWVeI1h9GlrafmN9pi0vmChSfWcCRpcKxPbpWxYiCQyhTp0w4Sey74Rw6qTryM8-O7Xz2bwogSOW_sbQLDXxcEOX16XMjGV7pV3tFKyHDbZUc7KiOFWwkdCM68s5jeszQEV9RyrtIBWSkgvCPjTOBTiTodaPU3mIkORQN3EGw8Oc2L6oufnpAYYEjTUYrn4wSW3P368_RVDrBJnrWLnNG_V2H3b9MLf8"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 p-8 w-full flex flex-col md:flex-row md:items-end justify-between gap-4"
+              >
+                <div class="text-white max-w-lg">
+                  <span
+                    class="uppercase text-xs font-bold tracking-widest text-blue-400 mb-2 block"
+                    >Graphics and Design</span
                   >
-                </h3>
-                <div class="space-y-3">
-                  <!-- Trending Item 1 -->
-                  <div class="flex items-start gap-3">
-                    <div
-                      class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"
-                    >
-                      <span class="text-lg">📱</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <p class="font-medium text-sm text-gray-900">Telegram</p>
-                      <p class="text-xs text-gray-500">Social networks</p>
-                    </div>
-                    <a
-                      href="#"
-                      class="text-green-500 text-xs font-semibold hover:underline flex-shrink-0"
-                      >Download</a
-                    >
-                  </div>
-                  <!-- Trending Item 2 -->
-                  <div class="flex items-start gap-3">
-                    <div
-                      class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0"
-                    >
-                      <span class="text-lg">💬</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <p class="font-medium text-sm text-gray-900">
-                        Whatsapp Desktop
-                      </p>
-                      <p class="text-xs text-gray-500">Trending</p>
-                    </div>
-                    <a
-                      href="#"
-                      class="text-green-500 text-xs font-semibold hover:underline flex-shrink-0"
-                      >Download</a
-                    >
-                  </div>
-                  <!-- Trending Item 3 -->
-                  <div class="flex items-start gap-3">
-                    <div
-                      class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0"
-                    >
-                      <span class="text-lg">🧘</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <p class="font-medium text-sm text-gray-900">
-                        Meditation
-                      </p>
-                      <p class="text-xs text-gray-500">Meditation apps</p>
-                    </div>
-                    <a
-                      href="#"
-                      class="text-green-500 text-xs font-semibold hover:underline flex-shrink-0"
-                      >Download</a
-                    >
-                  </div>
-                  <!-- Trending Item 4 -->
-                  <div class="flex items-start gap-3">
-                    <div
-                      class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"
-                    >
-                      <span class="text-lg">📊</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <p class="font-medium text-sm text-gray-900">
-                        Microsoft Word
-                      </p>
-                      <p class="text-xs text-gray-500">Office suite</p>
-                    </div>
-                    <a
-                      href="#"
-                      class="text-green-500 text-xs font-semibold hover:underline flex-shrink-0"
-                      >Download</a
-                    >
-                  </div>
+                  <h2 class="text-3xl font-bold mb-2">
+                    Vectornator: Design Software
+                  </h2>
+                  <p class="text-slate-300 text-sm">
+                    Create designs, interfaces and beautiful illustrations with
+                    this professional vector tool designed for productivity.
+                  </p>
                 </div>
+                <button
+                  class="bg-primary hover:bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg transition-all active:scale-95 whitespace-nowrap"
+                >
+                  Download
+                </button>
               </div>
-            </div>
-
-            <!-- Categories -->
-            <div class="mb-8">
-              <div class="flex items-center justify-between mb-4">
-                <h2 class="text-lg font-bold text-gray-900">Categories</h2>
+            </section>
+            <section>
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-bold">Categories</h3>
                 <a
+                  class="text-sm font-semibold text-primary hover:underline"
                   href="#"
-                  class="text-green-500 text-sm font-semibold hover:underline"
                   >Show all</a
                 >
               </div>
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div
-                  class="bg-white rounded-xl p-4 border border-gray-200 hover:border-gray-300 cursor-pointer text-center"
+                <button
+                  class="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
                 >
-                  <div class="text-3xl mb-2">🎮</div>
-                  <p class="text-sm font-semibold text-gray-900">Games</p>
-                </div>
-                <div
-                  class="bg-white rounded-xl p-4 border border-gray-200 hover:border-gray-300 cursor-pointer text-center"
+                  <div
+                    class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <span class="material-icons-outlined">videogame_asset</span>
+                  </div>
+                  <span class="font-semibold">Games</span>
+                </button>
+                <button
+                  class="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
                 >
-                  <div class="text-3xl mb-2">🎨</div>
-                  <p class="text-sm font-semibold text-gray-900">Creation</p>
-                </div>
-                <div
-                  class="bg-white rounded-xl p-4 border border-gray-200 hover:border-gray-300 cursor-pointer text-center"
+                  <div
+                    class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <span class="material-icons-outlined">palette</span>
+                  </div>
+                  <span class="font-semibold">Creation</span>
+                </button>
+                <button
+                  class="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
                 >
-                  <div class="text-3xl mb-2">💻</div>
-                  <p class="text-sm font-semibold text-gray-900">Development</p>
-                </div>
-                <div
-                  class="bg-white rounded-xl p-4 border border-gray-200 hover:border-gray-300 cursor-pointer text-center"
+                  <div
+                    class="w-10 h-10 rounded-xl bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <span class="material-icons-outlined">code</span>
+                  </div>
+                  <span class="font-semibold">Dev</span>
+                </button>
+                <button
+                  class="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow group"
                 >
-                  <div class="text-3xl mb-2">💼</div>
-                  <p class="text-sm font-semibold text-gray-900">Work</p>
-                </div>
+                  <div
+                    class="w-10 h-10 rounded-xl bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center group-hover:scale-110 transition-transform"
+                  >
+                    <span class="material-icons-outlined">business_center</span>
+                  </div>
+                  <span class="font-semibold">Work</span>
+                </button>
               </div>
-            </div>
-
-            <!-- Top Games & Apps -->
-            <div class="mb-8">
-              <div class="flex items-center justify-between mb-4">
-                <h2 class="text-lg font-bold text-gray-900">
-                  Top Games & Apps
-                </h2>
+            </section>
+            <section>
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-bold">Top Games &amp; Apps</h3>
                 <a
+                  class="text-sm font-semibold text-primary hover:underline"
                   href="#"
-                  class="text-green-500 text-sm font-semibold hover:underline"
                   >Show all</a
                 >
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <!-- App Card 1 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div
-                  class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all cursor-pointer"
+                  class="bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-transparent dark:border-slate-700/50"
                 >
                   <div
-                    class="aspect-square bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center"
+                    class="relative aspect-square rounded-2xl overflow-hidden mb-4"
                   >
-                    <span class="text-6xl">🦜</span>
+                    <img
+                      alt="Tayasui sketches"
+                      class="w-full h-full object-cover"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3rVtf_tJCOodDRyJCI_FB3TwtD_BAZnVlg5s54J1-RX_EXOUz7_fxf4JDQnaUawfu0DxZCkuxmy-seq7DxdHBAqcrC_9vd-lBc6LDwE09iHUHJxGwH8q6kSPPPs2eWkj3rbuchH5HlRiEKwudLsANCBhi6tZrhUMIPmYlGdaqkhu-aulAab4HSSykFZtZGL4NGPPym7s4kOuCKuEy6EumJcwRHZ0FpAS_XbZM5yafQRCFRT0nHOOdWP44q7sBwBqP1oIsvGRg1Tg"
+                    />
                   </div>
-                  <div class="p-4">
-                    <h3 class="font-semibold text-gray-900 text-sm mb-1">
-                      Taysur sketches
-                    </h3>
-                    <p class="text-xs text-gray-500 mb-3">Creation</p>
-                    <a
-                      href="#"
-                      class="text-green-500 text-xs font-semibold hover:underline"
+                  <h4 class="font-bold">Tayasui sketches</h4>
+                  <div class="flex items-center justify-between mt-1">
+                    <span
+                      class="text-xs text-slate-500 dark:text-slate-400 uppercase font-medium"
+                      >Creation</span
+                    >
+                    <a class="text-xs font-bold text-primary" href="#"
                       >Download</a
                     >
                   </div>
                 </div>
-
-                <!-- App Card 2 -->
                 <div
-                  class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all cursor-pointer"
+                  class="bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-transparent dark:border-slate-700/50"
                 >
                   <div
-                    class="aspect-square bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center"
+                    class="relative aspect-square rounded-2xl overflow-hidden mb-4"
                   >
-                    <span class="text-6xl">🌊</span>
+                    <img
+                      alt="Myst Game"
+                      class="w-full h-full object-cover"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDhct6zWypOTHCyOC0KwhOszhm6KY_5CAlUIuU3JzyX703KfbXg-QAZ7TRlOly066bqR0ruvW4jVKjreLoAGL1yCi_6ClG2Ue-bOmFgyOXjuAshGkbjyGOx-HbM3P_gOqaKT7t-6bvYGnaaKZHAt5D868SHWuicAcxP9OpFLPB3uw2Unh9frs6-deIFT4eoSsSJPmFXbkXaXfNC9uMPreBe6etlWX7pT0HV9YGmiYcZn_HvKgFODxSE11ogrp1atQ0SdJSK58X8MM"
+                    />
                   </div>
-                  <div class="p-4">
-                    <h3 class="font-semibold text-gray-900 text-sm mb-1">
-                      Myst
-                    </h3>
-                    <p class="text-xs text-gray-500 mb-3">Adventure game</p>
-                    <p class="text-xs text-gray-400">$12.00</p>
-                  </div>
-                </div>
-
-                <!-- App Card 3 -->
-                <div
-                  class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all cursor-pointer"
-                >
-                  <div
-                    class="aspect-square bg-gradient-to-br from-orange-400 to-red-400 flex items-center justify-center"
-                  >
-                    <span class="text-6xl">⚡</span>
-                  </div>
-                  <div class="p-4">
-                    <h3 class="font-semibold text-gray-900 text-sm mb-1">
-                      Swift Playgrounds
-                    </h3>
-                    <p class="text-xs text-gray-500 mb-3">Development</p>
-                    <p class="text-xs text-gray-400">$9.99</p>
-                  </div>
-                </div>
-
-                <!-- App Card -->
-                <div
-                  class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all cursor-pointer"
-                >
-                  <div
-                    class="aspect-square bg-gradient-to-br from-orange-300 to-yellow-300 flex items-center justify-center"
-                  >
-                    <span class="text-6xl">🏡</span>
-                  </div>
-                  <div class="p-4">
-                    <h3 class="font-semibold text-gray-900 text-sm mb-1">
-                      Bring You Home
-                    </h3>
-                    <p class="text-xs text-gray-500 mb-3">Puzzle Game</p>
-                    <button
-                      class="w-full bg-blue-500 hover:bg-blue-600 text-white text-xs py-1.5 rounded-lg font-semibold mt-2"
+                  <h4 class="font-bold">Myst</h4>
+                  <div class="flex items-center justify-between mt-1">
+                    <span
+                      class="text-xs text-slate-500 dark:text-slate-400 uppercase font-medium"
+                      >Adventure Game</span
                     >
-                      $21.50
-                    </button>
+                    <span class="text-xs font-bold text-primary">$12.00</span>
+                  </div>
+                </div>
+                <div
+                  class="bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-transparent dark:border-slate-700/50"
+                >
+                  <div
+                    class="relative aspect-square rounded-2xl overflow-hidden mb-4"
+                  >
+                    <img
+                      alt="Swift Playgrounds"
+                      class="w-full h-full object-cover"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAlefWWfGDxkLvT2tSVvjCaR1wD3r3z74Bhjsc-fucPULb0NZuOwEskhZjShvnRiP-q81hq6eX20yRVXdW9RLWpu-CCcMnhmIzCMGexDx_QBTCcWVoDjbkyo0zlHDQoeeXySnmstSJJ-A3HXRA5JpO4C-BCDHCNZIrBp-O-rcksK-4uDOXmuhqKdMrJ1bmEK5EYKTzp1Lhw6G1IeTuk8JbGFzfb0U3wITau2v8dDeumy1MLckI3FhE_Lq9xNIltXW39CYwcydJNsQ"
+                    />
+                  </div>
+                  <h4 class="font-bold">Swift Playgrounds</h4>
+                  <div class="flex items-center justify-between mt-1">
+                    <span
+                      class="text-xs text-slate-500 dark:text-slate-400 uppercase font-medium"
+                      >Development</span
+                    >
+                    <span class="text-xs font-bold text-primary">$25.00</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </main>
-      </div>
+          <div class="lg:col-span-4 space-y-8">
+            <section
+              class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm"
+            >
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold">Trending</h3>
+                <a
+                  class="text-xs font-semibold text-primary hover:underline"
+                  href="#"
+                  >Show all</a
+                >
+              </div>
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center text-blue-500"
+                  >
+                    <span class="material-icons-outlined">send</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-bold truncate">Telegram</h4>
+                    <p
+                      class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tight"
+                    >
+                      Social Networks
+                    </p>
+                  </div>
+                  <button
+                    class="text-[11px] font-bold text-primary bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors"
+                  >
+                    Download
+                  </button>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-green-100 dark:bg-green-900/40 rounded-xl flex items-center justify-center text-green-500"
+                  >
+                    <span class="material-icons-outlined">chat</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-bold truncate">WhatsApp Desktop</h4>
+                    <p
+                      class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tight"
+                    >
+                      Trending
+                    </p>
+                  </div>
+                  <button
+                    class="text-[11px] font-bold text-primary bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors"
+                  >
+                    Download
+                  </button>
+                </div>
+                <div class="flex items-center gap-4">
+                  <img
+                    alt="Machinarium"
+                    class="w-12 h-12 rounded-xl object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZW_FquS_z02jWMWVYptryemx4iuYIj0_j2Qo9oXkC6wWnC3Fp6MqRP_H2fJi6powtwZlGG6WVpzYPi1bvm03ZtokXdifqNSN84EpYlsjBzsEadKyLu57XB5t-OodpMhplNZ_erzuSqxdEyBErlAjQswLyl6-HkDcFSEHDEh3Ysz_E94MYlNOZFjKXW2IhP9LlssX5WkNHOtsWpJZnyrsguHijoMx-BgKD3HC4WJpHoEyEG-C8iUUaRtuzbJjOvnBNgx9ytwd3pjQ"
+                  />
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-bold truncate">Machinarium</h4>
+                    <p
+                      class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tight"
+                    >
+                      Adventure Game
+                    </p>
+                  </div>
+                  <button
+                    class="text-[11px] font-bold text-primary bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors"
+                  >
+                    Download
+                  </button>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/40 rounded-xl flex items-center justify-center text-indigo-500"
+                  >
+                    <span class="material-icons-outlined">description</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-bold truncate">Microsoft Word</h4>
+                    <p
+                      class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tight"
+                    >
+                      Text Editor
+                    </p>
+                  </div>
+                  <button
+                    class="text-[11px] font-bold text-primary bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-colors"
+                  >
+                    Download
+                  </button>
+                </div>
+              </div>
+            </section>
+            <section
+              class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm overflow-hidden relative group"
+            >
+              <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+                <img
+                  alt="Bring You Home Game"
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo7msaWLQaVY-9Uz89HOXMcjo_vvrdPE303y-nVSV19ciJ9CJeeVvcgn1RlKWg8A7-t3EqXbmqXO7JHf0jLjq_1SB0JvI_JKGWak3cD3x5rMBqZw-w4TKNRNtHr5l_G6imsNHWb21UtwIQjf7mEP7zbkYwv5Fe7g3e_Sw1aQqD9lgLCkuyZ0mvp7ng3SzEOrCJCbYDkJ4L1i-YK1iUqWJKseEinHHRLB4RrIJCpqRTJIGub4Oy9nYz9lcUaNf3JcJeYvawt480_zU"
+                />
+              </div>
+              <h4 class="text-xl font-bold mb-1">Bring You Home</h4>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                A cute, purely visual puzzle game for the whole family.
+              </p>
+              <button
+                class="w-full bg-primary py-4 rounded-2xl text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:-translate-y-1 active:scale-95"
+              >
+                $21.50
+              </button>
+            </section>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script src="script.js"></script>
